@@ -1,26 +1,21 @@
-import 'home.dart';
-
 
   late List listNumForAddSub;
   late List listAddSubOpr;
 
-  late List assistant1=[];
+  List assistant1=[];
   List<List> listOfListNumForMultDiv = [];
   List<List> listMultDivOpr = [];
   bool thereIsMultAndDiv1 = false;
   bool thereIsMultAndDiv2 = false;
   late List listNumForMultDiv;
   late List assistant2;
-  late List indexMultOrDiv = [];
+  List indexMultOrDiv = [];
 
   void divParentEquationIntoAdditionAndSubtraction(equation) {
     listNumForAddSub = equation!.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
     listAddSubOpr = equation!.split(RegExp(r"[*/.]?\d+")); //tbaynlna win ljamee w win tareh
-    //print("hadi y: $y");
-    // List j=text.split(RegExp(r'[-+]'));
-    print(listNumForAddSub);
+
     listAddSubOpr = addOprToList(listAddSubOpr);
-    print("hadi y: $listAddSubOpr");
   }
 
 //---------------------------------------------------
@@ -38,7 +33,6 @@ import 'home.dart';
         if (thereIsMultAndDiv1) {
             listNumForMultDiv = listNumForAddSub[i].split(RegExp(r'[/*]'));
             assistant2 = listNumForAddSub[i].split(RegExp(r"[+-.]?\d+"));
-            print("hadi assistant2 $assistant2");
             assistant1=[];
             for (int i = 0; i < assistant2.length; i++) {
               if (assistant2[i] == '*' || assistant2[i] == '/') {
@@ -47,42 +41,16 @@ import 'home.dart';
             }
             listOfListNumForMultDiv.add(listNumForMultDiv);
             listMultDivOpr.add(assistant1);
-          // print("yes ther is $z");
           thereIsMultAndDiv1 = false;
           break;
         }
       }
-      print("oprat $listMultDivOpr");
-      print("lastNum $listOfListNumForMultDiv");
-      print("indexMultOrDiv $indexMultOrDiv");
-      // print("hadi y glob $z");
+
     }
-    print("this is the lstNum $listOfListNumForMultDiv");
-    print("this is the lstOpr $listMultDivOpr");
-    print("this is index $indexMultOrDiv");
+
   }
 
 
-  //--------------------------------------------------------------------
-
-  // void funLstTwoNumbers(List ll, List ind) {
-  //   for (int i = 0; i < ll.length; i++) {
-  //     for (int j = 1; j < ll[i].length; j += 2) {
-  //       switch (ll[i][j]) {
-  //         case "*":
-  //           listNumForAddSub[ind[i]] =
-  //               (mult(double.parse(ll[i][j - 1]), double.parse(ll[i][j + 1])))
-  //                   .toString(); break;
-  //         case "/":
-  //           listNumForAddSub[ind[i]] =
-  //               (div(double.parse(ll[i][j - 1]), double.parse(ll[i][j + 1])))
-  //                   .toString();
-  //         default:
-  //           print("err");
-  //       }
-  //     }
-  //   }
-  // }
 
 
   //---------------------------------------------------------------------------------
@@ -130,13 +98,11 @@ import 'home.dart';
               (div(double.parse(listOfListNumForMultDiv[i][j]), double.parse(listOfListNumForMultDiv[i][j+1])))
                   .toString();
         default:
-          print("err");
       }
 
       a=j;
     }
     listNumForAddSub[indexMultOrDiv[i]]=listOfListNumForMultDiv[i][a+1];
-    print(listNumForAddSub[indexMultOrDiv[i]]);print(listNumForAddSub);
   }
 
   }

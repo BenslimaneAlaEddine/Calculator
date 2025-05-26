@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Calc.dart';
-import 'main.dart';
 
 class MyStateLess extends StatelessWidget {
   const MyStateLess({super.key});
@@ -38,18 +37,34 @@ class MyState extends State<MyStateFul> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextField(readOnly: true,
-                controller: equation,
-                decoration: InputDecoration(label: Text("equation")),
-              ),
-
-              TextField(readOnly: true,
-                controller: result,
-                decoration: InputDecoration(
-                  label: Text("resultat"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  readOnly: true,
+                  controller: equation,
+                  decoration: const InputDecoration(
+                      label: Text("equation",style: TextStyle(fontSize: 30,color: Colors.black),), border: InputBorder.none),
+                  style: TextStyle(height: 3,color: Colors.black),
                 ),
-                style: TextStyle(height: 5),
+              ),
+              // const SizedBox(
+              //   height: 30,
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  readOnly: true,
+                  controller: result,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    label: Text("result :",style: TextStyle(fontSize: 30,color: Colors.black),),
 
+                  ),
+                  style: const TextStyle(height: 3,fontSize: 20,fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(
+                height: 50,
               ),
               Row(
                 children: [
@@ -60,7 +75,7 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                         onPressed: () {
                           c.clear();
-                           equation.text='';
+                          equation.text = '';
 
                           listNumForAddSub = [];
                           listAddSubOpr = [];
@@ -72,9 +87,9 @@ class MyState extends State<MyStateFul> {
                           listNumForMultDiv = [];
                           assistant2 = [];
                           indexMultOrDiv = [];
-                        result.text='';
+                          result.text = '';
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.refresh,
                           color: Colors.black,
                           size: 30,
@@ -82,7 +97,7 @@ class MyState extends State<MyStateFul> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -92,26 +107,20 @@ class MyState extends State<MyStateFul> {
                       height: 80,
                       child: IconButton(
                         onPressed: () {
-
-                          print(c);
                           c.removeLast();
-                          print(c);
 
-                          equation.text='';
+                          equation.text = '';
                           for (int i = 0; i < c.length; i++) {
                             equation.text = '${equation.text}${c[i]}';
                           }
-
-
                         },
-                        icon: Icon(Icons.backspace),
+                        icon: const Icon(Icons.backspace),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
-
+              const SizedBox(
                 height: 2,
               ),
               Row(
@@ -123,17 +132,16 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(7);
-                            print(c);
                             equation.text ?? '';
-                            equation.text="${equation.text}7";
+                            equation.text = "${equation.text}7";
                           },
-                          child: Text(
+                          child: const Text(
                             "7",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -146,15 +154,15 @@ class MyState extends State<MyStateFul> {
                             c.add(8);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}8";
+                            equation.text = "${equation.text}8";
                           },
-                          child: Text(
+                          child: const Text(
                             "8",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -167,15 +175,15 @@ class MyState extends State<MyStateFul> {
                             c.add(9);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}9";
+                            equation.text = "${equation.text}9";
                           },
-                          child: Text(
+                          child: const Text(
                             "9",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -188,9 +196,9 @@ class MyState extends State<MyStateFul> {
                             c.add('*');
 
                             equation.text ?? '';
-                            equation.text="${equation.text}*";
+                            equation.text = "${equation.text}*";
                           },
-                          child: Text(
+                          child: const Text(
                             "*",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
@@ -198,7 +206,7 @@ class MyState extends State<MyStateFul> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 2,
                 height: 2,
               ),
@@ -213,15 +221,15 @@ class MyState extends State<MyStateFul> {
                             c.add(4);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}4";
+                            equation.text = "${equation.text}4";
                           },
-                          child: Text(
+                          child: const Text(
                             "4",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -234,15 +242,15 @@ class MyState extends State<MyStateFul> {
                             c.add(5);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}5";
+                            equation.text = "${equation.text}5";
                           },
-                          child: Text(
+                          child: const Text(
                             "5",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -255,15 +263,15 @@ class MyState extends State<MyStateFul> {
                             c.add(6);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}6";
+                            equation.text = "${equation.text}6";
                           },
-                          child: Text(
+                          child: const Text(
                             "6",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -275,9 +283,9 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add('-');
                             equation.text ?? '';
-                            equation.text="${equation.text}-";
+                            equation.text = "${equation.text}-";
                           },
-                          child: Text(
+                          child: const Text(
                             "-",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
@@ -285,7 +293,7 @@ class MyState extends State<MyStateFul> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 2,
                 height: 2,
               ),
@@ -299,15 +307,15 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(1);
                             equation.text ?? '';
-                            equation.text="${equation.text}1";
+                            equation.text = "${equation.text}1";
                           },
-                          child: Text(
+                          child: const Text(
                             "1",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -320,15 +328,15 @@ class MyState extends State<MyStateFul> {
                             c.add(2);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}2";
+                            equation.text = "${equation.text}2";
                           },
-                          child: Text(
+                          child: const Text(
                             "2",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -341,15 +349,15 @@ class MyState extends State<MyStateFul> {
                             c.add(3);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}3";
+                            equation.text = "${equation.text}3";
                           },
-                          child: Text(
+                          child: const Text(
                             "3",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -362,9 +370,9 @@ class MyState extends State<MyStateFul> {
                             c.add('+');
 
                             equation.text ?? '';
-                            equation.text="${equation.text}+";
+                            equation.text = "${equation.text}+";
                           },
-                          child: Text(
+                          child: const Text(
                             "+",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
@@ -372,7 +380,7 @@ class MyState extends State<MyStateFul> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 2,
                 height: 2,
               ),
@@ -387,15 +395,15 @@ class MyState extends State<MyStateFul> {
                             c.add(0);
 
                             equation.text ?? '';
-                            equation.text="${equation.text}0";
+                            equation.text = "${equation.text}0";
                           },
-                          child: Text(
+                          child: const Text(
                             "0",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -409,15 +417,15 @@ class MyState extends State<MyStateFul> {
                             c.add('.');
 
                             equation.text ?? '';
-                            equation.text="${equation.text}.";
+                            equation.text = "${equation.text}.";
                           },
-                          child: Text(
+                          child: const Text(
                             ",",
                             style: TextStyle(fontSize: 40, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -430,15 +438,15 @@ class MyState extends State<MyStateFul> {
                             c.add('/');
 
                             equation.text ?? '';
-                            equation.text="${equation.text}/";
+                            equation.text = "${equation.text}/";
                           },
-                          child: Text(
+                          child: const Text(
                             "/",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                     height: 2,
                   ),
@@ -448,14 +456,14 @@ class MyState extends State<MyStateFul> {
                       height: 80,
                       child: TextButton(
                           onPressed: () {
-                            divParentEquationIntoAdditionAndSubtraction(equation.text);
+                            divParentEquationIntoAdditionAndSubtraction(
+                                equation.text);
                             determineMultAndDivOperationAndItsLocation();
                             solvingMultiplicationAndDivisionEquations();
 
-
-                            result.text=solveOverallEquation();
+                            result.text = solveOverallEquation();
                           },
-                          child: Text(
+                          child: const Text(
                             "=",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
@@ -473,4 +481,3 @@ class MyState extends State<MyStateFul> {
 
 TextEditingController result = TextEditingController();
 List c = [];
-
