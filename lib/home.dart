@@ -27,10 +27,11 @@ class MyStateFul extends StatefulWidget {
 class MyState extends State<MyStateFul> {
   TextEditingController equation = TextEditingController();
 
+  bool egal = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -42,10 +43,10 @@ class MyState extends State<MyStateFul> {
                 child: TextField(
                   readOnly: true,
                   controller: equation,
-                  style: const TextStyle(height: 1, color: Colors.black,fontSize: 26),
+                  style: TextStyle(
+                      height: 1, color: Colors.black, fontSize: egal ? 20 : 30),
                 ),
               ),
-             
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
@@ -55,11 +56,14 @@ class MyState extends State<MyStateFul> {
                     border: InputBorder.none,
                     label: Text(
                       "result :",
-                      style: TextStyle(fontSize: 30, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 30, color: Colors.black, height: 1),
                     ),
                   ),
-                  style: const TextStyle(
-                      height: 3, fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      height: 3,
+                      fontSize: egal ? 26 : 20,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(
@@ -81,7 +85,6 @@ class MyState extends State<MyStateFul> {
 
                           listNumForAddSub = [];
                           listAddSubOpr = [];
-
                           assistant1 = [];
                           listOfListNumForMultDiv = [];
                           listMultDivOpr = [];
@@ -91,9 +94,9 @@ class MyState extends State<MyStateFul> {
                           indexMultOrDiv = [];
                           result.text = '';
                         },
-                        child: Text("AC"
-                         ,style: TextStyle(color: Colors.black,fontSize: 30),
-
+                        child: const Text(
+                          "AC",
+                          style: TextStyle(color: Colors.black, fontSize: 30),
                         ),
                       ),
                     ),
@@ -106,19 +109,28 @@ class MyState extends State<MyStateFul> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Color(0xFFCDCFCF),
+                        color: const Color(0xFFCDCFCF),
                       ),
                       height: 75,
                       child: IconButton(
                         onPressed: () {
-                          c.removeLast();
+                          if (c.isNotEmpty) {
+                            c.removeLast();
 
-                          equation.text = '';
-                          for (int i = 0; i < c.length; i++) {
-                            equation.text = '${equation.text}${c[i]}';
+                            equation.text = '';
+                            for (int i = 0; i < c.length; i++) {
+                              equation.text = '${equation.text}${c[i]}';
+                            }
                           }
+                          setState(() {
+                            egal=false;
+                          });
                         },
-                        icon: const Icon(Icons.backspace,color: Colors.black,size: 30,),
+                        icon: const Icon(
+                          Icons.backspace,
+                          color: Colors.black,
+                          size: 30,
+                        ),
                       ),
                     ),
                   ),
@@ -138,6 +150,9 @@ class MyState extends State<MyStateFul> {
                       height: 75,
                       child: TextButton(
                           onPressed: () {
+                            setState(() {
+                              egal=false;
+                            });
                             c.add(7);
                             equation.text ?? '';
                             equation.text = "${equation.text}7";
@@ -162,7 +177,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(8);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}8";
                           },
@@ -186,7 +203,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(9);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}9";
                           },
@@ -210,7 +229,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('×');
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}×";
                           },
@@ -238,7 +259,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(4);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}4";
                           },
@@ -262,7 +285,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(5);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}5";
                           },
@@ -286,7 +311,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(6);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}6";
                           },
@@ -310,6 +337,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('-');
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}-";
                           },
@@ -337,6 +367,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(1);
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}1";
                           },
@@ -360,7 +393,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(2);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}2";
                           },
@@ -384,7 +419,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(3);
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}3";
                           },
@@ -408,7 +445,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('+');
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}+";
                           },
@@ -436,8 +475,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(0);
-
-                            equation.text ?? '';
+                            setState(() {
+                              egal=false;
+                            });                            equation.text ?? '';
                             equation.text = "${equation.text}0";
                           },
                           child: const Text(
@@ -461,7 +501,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('.');
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}.";
                           },
@@ -485,7 +527,9 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('÷');
-
+                            setState(() {
+                              egal=false;
+                            });
                             equation.text ?? '';
                             equation.text = "${equation.text}÷";
                           },
@@ -508,6 +552,9 @@ class MyState extends State<MyStateFul> {
                       height: 75,
                       child: TextButton(
                           onPressed: () {
+                            setState(() {
+                              egal=true;
+                            });
                             divParentEquationIntoAdditionAndSubtraction(
                                 equation.text);
                             determineMultAndDivOperationAndItsLocation();
