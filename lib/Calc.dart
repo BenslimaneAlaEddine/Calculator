@@ -11,8 +11,18 @@ import 'package:firstapp/home.dart';
   late List assistant2;
   List indexMultOrDiv = [];
   void divParentEquationIntoAdditionAndSubtraction(equation) {
+List x=equation.split('');
+for(int i=0; i<x.length-1;i++){
+  if((x[i]=='+' || x[i]=='×' || x[i]=='÷' || x[i]=='-' || x[i]=='.') &&
+      (x[i+1]=='+' || x[i+1]=='×' || x[i+1]=='÷' || x[i+1]=='-' || x[i+1]=='.'))
+    {
+      throw Exception("plusiers operand");
+    }
+
+}
+print(x);
     listNumForAddSub = equation!.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
-    listAddSubOpr = equation!.split(RegExp(r"[*÷.]?\d+")); //tbaynlna win ljamee w win tareh
+    listAddSubOpr = equation!.split(RegExp(r"[×÷.]?\d+")); //tbaynlna win ljamee w win tareh
     listAddSubOpr = addOprToList(listAddSubOpr);
   }
 

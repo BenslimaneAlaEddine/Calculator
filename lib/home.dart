@@ -564,7 +564,7 @@ class MyState extends State<MyStateFul> {
                             result.text = solveOverallEquation();
                           }
                           catch(e){
-                            result.text="$e";
+                            result.text="error";
                           }
                           },
                           child: const Text(
