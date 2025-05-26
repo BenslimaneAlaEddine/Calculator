@@ -23,6 +23,8 @@ class MyStateFul extends StatefulWidget {
 }
 
 class MyState extends State<MyStateFul> {
+  TextEditingController equation = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,26 +38,29 @@ class MyState extends State<MyStateFul> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
-                width: 400,
-                child: Card(
-                    color: Colors.grey,
-                    child: Text(
-                      "CLC: $z",
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    )),
+              TextField(readOnly: true,
+                controller: equation,
+                decoration: InputDecoration(label: Text("equation")),
               ),
-              Container(
-                  padding: const EdgeInsets.only(bottom: 100, right: 200),
-                  child: Text(
-                    "Result: "
-                    "$r",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  )),
+              // SizedBox(
+              //   width: 400,
+              //   child: Card(
+              //       color: Colors.grey,
+              //       child: Text(
+              //         "CLC: $z",
+              //         style: TextStyle(
+              //           fontSize: 30,
+              //         ),
+              //       )),
+              // ),
+              TextField(readOnly: true,
+                controller: result,
+                decoration: InputDecoration(
+                  label: Text("resultat"),
+                ),
+                style: TextStyle(height: 5),
+
+              ),
               Row(
                 children: [
                   Expanded(
@@ -65,22 +70,19 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                         onPressed: () {
                           c.clear();
-                          z = '';
-                          r = '';
-                           listNumForAddSub= [];
-                         listAddSubOpr= [];
+                           equation.text='';
 
-                         assistant1=[];
-                         listOfListNumForMultDiv = [];
-                         listMultDivOpr = [];
+                          listNumForAddSub = [];
+                          listAddSubOpr = [];
+
+                          assistant1 = [];
+                          listOfListNumForMultDiv = [];
+                          listMultDivOpr = [];
                           thereIsMultAndDiv1 = false;
-                          listNumForMultDiv= [];
-                          assistant2= [];
+                          listNumForMultDiv = [];
+                          assistant2 = [];
                           indexMultOrDiv = [];
-                          setState(() {
-                            z = z;
-                            r = r;
-                          });
+                        result.text='';
                         },
                         child: Icon(
                           Icons.refresh,
@@ -100,19 +102,19 @@ class MyState extends State<MyStateFul> {
                       height: 80,
                       child: IconButton(
                         onPressed: () {
-                         // List k = z!.split(RegExp(''));
-                         // print("k=$k");
+                          // List k = z!.split(RegExp(''));
+                          // print("k=$k");
                           //String s = '';
                           print(c);
                           c.removeLast();
                           print(c);
-                          print("z: $z");
-                          z = '';
+                          // print("z: $z");
+                          equation.text='';// z = '';
                           for (int i = 0; i < c.length; i++) {
-                            z = z! + '${c[i]}';
+                            equation.text = '${equation.text}${c[i]}';// z = z! + '${c[i]}';
                           }
 
-                          print("z: $z");
+                          // print("z: $z");
                           //hnaaaaaa rani ndir bach nfacer
                           // for (int i = 0; i < k.length; i++) {
                           //   if (i == k.length - 1) break;
@@ -120,9 +122,9 @@ class MyState extends State<MyStateFul> {
                           // }
                           // if(s.isEmpty ){c=[];}
                           // else c = s.split('');
-                          setState(() {
-                            z;
-                          });
+                          // setState(() {
+                          //   z;
+                          // });
                         },
                         icon: Icon(Icons.backspace),
                       ),
@@ -144,10 +146,12 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(7);
                             print(c);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}7';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}7';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}7";
                           },
                           child: Text(
                             "7",
@@ -166,10 +170,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(8);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}8';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}8';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}8";
                           },
                           child: Text(
                             "8",
@@ -188,10 +194,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(9);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}9';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}9';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}9";
                           },
                           child: Text(
                             "9",
@@ -210,10 +218,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('*');
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}*';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}*';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}*";
                           },
                           child: Text(
                             "*",
@@ -236,10 +246,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(4);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}4';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}4';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}4";
                           },
                           child: Text(
                             "4",
@@ -258,10 +270,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(5);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}5';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}5';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}5";
                           },
                           child: Text(
                             "5",
@@ -280,10 +294,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(6);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}6';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}6';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}6";
                           },
                           child: Text(
                             "6",
@@ -302,10 +318,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('-');
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}-';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}-';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}-";
                           },
                           child: Text(
                             "-",
@@ -328,10 +346,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(1);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}1';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}1';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}1";
                           },
                           child: Text(
                             "1",
@@ -350,10 +370,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(2);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}2';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}2';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}2";
                           },
                           child: Text(
                             "2",
@@ -372,10 +394,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(3);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}3';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}3';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}3";
                           },
                           child: Text(
                             "3",
@@ -394,10 +418,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('+');
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}+';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}+';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}+";
                           },
                           child: Text(
                             "+",
@@ -420,10 +446,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add(0);
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}0';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}0';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}0";
                           },
                           child: Text(
                             "0",
@@ -443,10 +471,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('.');
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}.';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}.';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}.";
                           },
                           child: Text(
                             ",",
@@ -465,10 +495,12 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             c.add('/');
-                            z ?? '';
-                            setState(() {
-                              z = '${z!}/';
-                            });
+                            // z ?? '';
+                            // setState(() {
+                            //   z = '${z!}/';
+                            // });
+                            equation.text ?? '';
+                            equation.text="${equation.text}/";
                           },
                           child: Text(
                             "/",
@@ -486,14 +518,15 @@ class MyState extends State<MyStateFul> {
                       height: 80,
                       child: TextButton(
                           onPressed: () {
-                            divParentEquationIntoAdditionAndSubtraction();
+                            divParentEquationIntoAdditionAndSubtraction(equation.text);
                             determineMultAndDivOperationAndItsLocation();
                             solvingMultiplicationAndDivisionEquations();
 
-                            setState(() {
-
-                                r = solveOverallEquation();
-                              });
+                            // setState(() {
+                            //   r = solveOverallEquation();
+                            // });
+                            //
+                            result.text=solveOverallEquation();
                           },
                           child: Text(
                             "=",
@@ -511,18 +544,6 @@ class MyState extends State<MyStateFul> {
   }
 }
 
-String? r = "";
-String? z = '';
+TextEditingController result = TextEditingController();
 List c = [];
-late int x;
-int? y;
-int i = 0;
 
-String calc() {
-  x = 0;
-  for (int i = 0; i < c.length; i += 2) {
-    x = (x + c[i]).toInt();
-  }
-  return x.toString();
-//if (c[i] is num){ }
-}

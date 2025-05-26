@@ -13,9 +13,9 @@ import 'home.dart';
   late List assistant2;
   late List indexMultOrDiv = [];
 
-  void divParentEquationIntoAdditionAndSubtraction() {
-    listNumForAddSub = z!.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
-    listAddSubOpr = z!.split(RegExp(r"[*/.]?\d+")); //tbaynlna win ljamee w win tareh
+  void divParentEquationIntoAdditionAndSubtraction(equation) {
+    listNumForAddSub = equation!.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
+    listAddSubOpr = equation!.split(RegExp(r"[*/.]?\d+")); //tbaynlna win ljamee w win tareh
     //print("hadi y: $y");
     // List j=text.split(RegExp(r'[-+]'));
     print(listNumForAddSub);
@@ -99,7 +99,7 @@ import 'home.dart';
       }
       p = i+1;
     }
-    return '${listNumForAddSub[p!]}';
+    return '${listNumForAddSub[p]}';
   }
 
 
