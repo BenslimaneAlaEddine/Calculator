@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:flutter/material.dart';
 import 'Calc.dart';
 
@@ -27,10 +30,7 @@ class MyState extends State<MyStateFul> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("CounterApp"),
-        backgroundColor: Colors.green,
-      ),
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -42,14 +42,10 @@ class MyState extends State<MyStateFul> {
                 child: TextField(
                   readOnly: true,
                   controller: equation,
-                  decoration: const InputDecoration(
-                      label: Text("equation",style: TextStyle(fontSize: 30,color: Colors.black),), border: InputBorder.none),
-                  style: TextStyle(height: 3,color: Colors.black),
+                  style: const TextStyle(height: 1, color: Colors.black,fontSize: 26),
                 ),
               ),
-              // const SizedBox(
-              //   height: 30,
-              // ),
+             
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
@@ -57,10 +53,13 @@ class MyState extends State<MyStateFul> {
                   controller: result,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    label: Text("result :",style: TextStyle(fontSize: 30,color: Colors.black),),
-
+                    label: Text(
+                      "result :",
+                      style: TextStyle(fontSize: 30, color: Colors.black),
+                    ),
                   ),
-                  style: const TextStyle(height: 3,fontSize: 20,fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      height: 3, fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(
@@ -70,8 +69,11 @@ class MyState extends State<MyStateFul> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                         onPressed: () {
                           c.clear();
@@ -89,10 +91,9 @@ class MyState extends State<MyStateFul> {
                           indexMultOrDiv = [];
                           result.text = '';
                         },
-                        child: const Icon(
-                          Icons.refresh,
-                          color: Colors.black,
-                          size: 30,
+                        child: Text("AC"
+                         ,style: TextStyle(color: Colors.black,fontSize: 30),
+
                         ),
                       ),
                     ),
@@ -103,8 +104,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: IconButton(
                         onPressed: () {
                           c.removeLast();
@@ -114,7 +118,7 @@ class MyState extends State<MyStateFul> {
                             equation.text = '${equation.text}${c[i]}';
                           }
                         },
-                        icon: const Icon(Icons.backspace),
+                        icon: const Icon(Icons.backspace,color: Colors.black,size: 30,),
                       ),
                     ),
                   ),
@@ -127,8 +131,11 @@ class MyState extends State<MyStateFul> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(7);
@@ -147,8 +154,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(8);
@@ -168,8 +178,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(9);
@@ -189,17 +202,20 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
-                            c.add('*');
+                            c.add('×');
 
                             equation.text ?? '';
-                            equation.text = "${equation.text}*";
+                            equation.text = "${equation.text}×";
                           },
                           child: const Text(
-                            "*",
+                            "×",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
@@ -214,8 +230,11 @@ class MyState extends State<MyStateFul> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(4);
@@ -235,8 +254,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(5);
@@ -256,8 +278,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(6);
@@ -277,8 +302,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add('-');
@@ -301,8 +329,11 @@ class MyState extends State<MyStateFul> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(1);
@@ -321,8 +352,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(2);
@@ -342,8 +376,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(3);
@@ -363,8 +400,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add('+');
@@ -388,8 +428,11 @@ class MyState extends State<MyStateFul> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add(0);
@@ -410,8 +453,11 @@ class MyState extends State<MyStateFul> {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             c.add('.');
@@ -431,17 +477,20 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
-                            c.add('/');
+                            c.add('÷');
 
                             equation.text ?? '';
-                            equation.text = "${equation.text}/";
+                            equation.text = "${equation.text}÷";
                           },
                           child: const Text(
-                            "/",
+                            "÷",
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           )),
                     ),
@@ -452,8 +501,11 @@ class MyState extends State<MyStateFul> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.grey,
-                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFCDCFCF),
+                      ),
+                      height: 75,
                       child: TextButton(
                           onPressed: () {
                             divParentEquationIntoAdditionAndSubtraction(

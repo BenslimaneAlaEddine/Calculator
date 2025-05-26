@@ -1,4 +1,4 @@
-
+import 'package:firstapp/home.dart';
   late List listNumForAddSub;
   late List listAddSubOpr;
 
@@ -10,11 +10,9 @@
   late List listNumForMultDiv;
   late List assistant2;
   List indexMultOrDiv = [];
-
   void divParentEquationIntoAdditionAndSubtraction(equation) {
     listNumForAddSub = equation!.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
-    listAddSubOpr = equation!.split(RegExp(r"[*/.]?\d+")); //tbaynlna win ljamee w win tareh
-
+    listAddSubOpr = equation!.split(RegExp(r"[*÷.]?\d+")); //tbaynlna win ljamee w win tareh
     listAddSubOpr = addOprToList(listAddSubOpr);
   }
 
@@ -25,17 +23,17 @@
       listNumForMultDiv = listNumForAddSub[i].split('');
       // print(z);
       for (int j = 0; j < listNumForMultDiv.length; j++) {
-        if (listNumForMultDiv[j] == '*' || listNumForMultDiv[j] == '/') {
+        if (listNumForMultDiv[j] == '×' || listNumForMultDiv[j] == '÷') {
           thereIsMultAndDiv1 = true;
           indexMultOrDiv.add(i);
         }
 
         if (thereIsMultAndDiv1) {
-            listNumForMultDiv = listNumForAddSub[i].split(RegExp(r'[/*]'));
+            listNumForMultDiv = listNumForAddSub[i].split(RegExp(r'[÷×]'));
             assistant2 = listNumForAddSub[i].split(RegExp(r"[+-.]?\d+"));
             assistant1=[];
             for (int i = 0; i < assistant2.length; i++) {
-              if (assistant2[i] == '*' || assistant2[i] == '/') {
+              if (assistant2[i] == '×' || assistant2[i] == '÷') {
                 assistant1.add(assistant2[i]);
               }
             }
@@ -89,11 +87,11 @@
     for (int j = 0; j < listOfListNumForMultDiv[i].length-1; j++) {
 
       switch (listMultDivOpr[i][j]) {
-        case "*":
+        case "×":
           listOfListNumForMultDiv[i][j+1] =
               (mult(double.parse(listOfListNumForMultDiv[i][j]), double.parse(listOfListNumForMultDiv[i][j+1])))
                   .toString(); break;
-        case "/":
+        case "÷":
           listOfListNumForMultDiv[i][j+1]  =
               (div(double.parse(listOfListNumForMultDiv[i][j]), double.parse(listOfListNumForMultDiv[i][j+1])))
                   .toString();
