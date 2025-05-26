@@ -555,12 +555,17 @@ class MyState extends State<MyStateFul> {
                             setState(() {
                               egal=true;
                             });
+                          try {
                             divParentEquationIntoAdditionAndSubtraction(
                                 equation.text);
                             determineMultAndDivOperationAndItsLocation();
                             solvingMultiplicationAndDivisionEquations();
 
                             result.text = solveOverallEquation();
+                          }
+                          catch(e){
+                            result.text="$e";
+                          }
                           },
                           child: const Text(
                             "=",

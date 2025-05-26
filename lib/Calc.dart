@@ -27,7 +27,6 @@ import 'package:firstapp/home.dart';
           thereIsMultAndDiv1 = true;
           indexMultOrDiv.add(i);
         }
-
         if (thereIsMultAndDiv1) {
             listNumForMultDiv = listNumForAddSub[i].split(RegExp(r'[÷×]'));
             assistant2 = listNumForAddSub[i].split(RegExp(r"[+-.]?\d+"));
