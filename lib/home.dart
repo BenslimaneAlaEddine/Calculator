@@ -62,7 +62,7 @@ class MyState extends State<MyStateFul> {
                   ),
                   style: TextStyle(
                       height: 3,
-                      fontSize: egal ? 26 : 20,
+                      fontSize: egal ? 30 : 20,
                       fontWeight: FontWeight.bold),
                 ),
               ),
