@@ -1,14 +1,13 @@
 import 'package:firstapp/home.dart';
-  late List listNumForAddSub;
-  late List listAddSubOpr;
-
+  late List listNumForAddSub= [];
+  late List listAddSubOpr= [];
   List assistant1=[];
   List<List> listOfListNumForMultDiv = [];
   List<List> listMultDivOpr = [];
   bool thereIsMultAndDiv1 = false;
   bool thereIsMultAndDiv2 = false;
-  late List listNumForMultDiv;
-  late List assistant2;
+  late List listNumForMultDiv= [];
+  late List assistant2= [];
   List indexMultOrDiv = [];
   void divParentEquationIntoAdditionAndSubtraction(String equation) {
     initVar();
@@ -135,12 +134,12 @@ for(int i=0; i<x.length-1;i++){
     return x / y;
   }
 void initVar(){
-   assistant1=[];
-   listOfListNumForMultDiv = [];
-   listMultDivOpr = [];
+   assistant1.clear();
+   listOfListNumForMultDiv.clear();
+   listMultDivOpr.clear();
    thereIsMultAndDiv1 = false;
    thereIsMultAndDiv2 = false;
-   listNumForMultDiv;
-   List assistant2;
-   indexMultOrDiv = [];
-}
+   listNumForMultDiv.clear();
+   assistant2.clear();
+   indexMultOrDiv.clear();
+  }

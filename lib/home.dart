@@ -32,20 +32,28 @@ class MyState extends State<MyStateFul> {
   void initState() {
     super.initState();
     equation.addListener(() {
-      if(equation.text.isNotEmpty){
-      List x = equation.text.split('');
-      if (x.last == '+' || x.last == '-' || x.last == '×' || x.last == '÷') {
-        x.removeLast();
+      try {
+        if (equation.text.isNotEmpty) {
+          List x = equation.text.split('');
+          if (x.last == '+' ||
+              x.last == '-' ||
+              x.last == '×' ||
+              x.last == '÷') {
+            x.removeLast();
+          }
+          divParentEquationIntoAdditionAndSubtraction(x
+              .toString()
+              .replaceAll('[', '')
+              .replaceAll(']', '')
+              .replaceAll(' ', '')
+              .replaceAll(',', ''));
+          determineMultAndDivOperationAndItsLocation();
+          solvingMultiplicationAndDivisionEquations();
+          result.text = solveOverallEquation();
+        }
+      } catch (e) {
+        result.text = "err";
       }
-      divParentEquationIntoAdditionAndSubtraction(x
-          .toString()
-          .replaceAll('[', '')
-          .replaceAll(']', '')
-          .replaceAll(' ', '')
-          .replaceAll(',', ''));
-      determineMultAndDivOperationAndItsLocation();
-      solvingMultiplicationAndDivisionEquations();
-      result.text = solveOverallEquation();}
     });
   }
 
