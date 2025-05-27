@@ -25,9 +25,35 @@ class MyStateFul extends StatefulWidget {
 }
 
 class MyState extends State<MyStateFul> {
-  TextEditingController equation = TextEditingController();
-
+  final TextEditingController equation = TextEditingController();
   bool egal = false;
+
+  @override
+  void initState() {
+    super.initState();
+    equation.addListener(() {
+      if(equation.text.isNotEmpty){
+      List x = equation.text.split('');
+      if (x.last == '+' || x.last == '-' || x.last == '×' || x.last == '÷') {
+        x.removeLast();
+      }
+      divParentEquationIntoAdditionAndSubtraction(x
+          .toString()
+          .replaceAll('[', '')
+          .replaceAll(']', '')
+          .replaceAll(' ', '')
+          .replaceAll(',', ''));
+      determineMultAndDivOperationAndItsLocation();
+      solvingMultiplicationAndDivisionEquations();
+      result.text = solveOverallEquation();}
+    });
+  }
+
+  @override
+  void dispose() {
+    equation.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +67,16 @@ class MyState extends State<MyStateFul> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  readOnly: true,
-                  controller: equation,
-                  style: TextStyle(
-                      height: 1, color: Colors.black, fontSize: egal ? 20 : 30),
-                ),
+                    readOnly: true,
+                    controller: equation,
+                    style: TextStyle(
+                      height: 1,
+                      color: Colors.black,
+                      fontSize: egal ? 20 : 30,
+                    ),
+                    onChanged: (v) {
+                      // result.text='3';
+                    }),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -82,7 +113,7 @@ class MyState extends State<MyStateFul> {
                         onPressed: () {
                           c.clear();
                           equation.text = '';
-
+                          // equation.value;
                           listNumForAddSub = [];
                           listAddSubOpr = [];
                           assistant1 = [];
@@ -116,14 +147,15 @@ class MyState extends State<MyStateFul> {
                         onPressed: () {
                           if (c.isNotEmpty) {
                             c.removeLast();
-
-                            equation.text = '';
+                            String equationAssistant = '';
+                            // equation.text = '';
                             for (int i = 0; i < c.length; i++) {
-                              equation.text = '${equation.text}${c[i]}';
+                              equationAssistant = '$equationAssistant${c[i]}';
                             }
+                            equation.text = equationAssistant;
                           }
                           setState(() {
-                            egal=false;
+                            egal = false;
                           });
                         },
                         icon: const Icon(
@@ -151,11 +183,11 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             c.add(7);
-                            equation.text ?? '';
-                            equation.text = "${equation.text}7";
+                            // equation.text ?? '';
+                            // equation.text = "${equation.text}7";
                           },
                           child: const Text(
                             "7",
@@ -178,7 +210,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(8);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}8";
@@ -204,7 +236,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(9);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}9";
@@ -230,7 +262,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add('×');
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}×";
@@ -260,7 +292,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(4);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}4";
@@ -286,7 +318,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(5);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}5";
@@ -312,7 +344,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(6);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}6";
@@ -338,7 +370,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add('-');
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}-";
@@ -368,7 +400,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(1);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}1";
@@ -394,7 +426,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(2);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}2";
@@ -420,7 +452,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(3);
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}3";
@@ -446,7 +478,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add('+');
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}+";
@@ -476,8 +508,9 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add(0);
                             setState(() {
-                              egal=false;
-                            });                            equation.text ?? '';
+                              egal = false;
+                            });
+                            equation.text ?? '';
                             equation.text = "${equation.text}0";
                           },
                           child: const Text(
@@ -502,7 +535,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add('.');
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}.";
@@ -528,7 +561,7 @@ class MyState extends State<MyStateFul> {
                           onPressed: () {
                             c.add('÷');
                             setState(() {
-                              egal=false;
+                              egal = false;
                             });
                             equation.text ?? '';
                             equation.text = "${equation.text}÷";
@@ -553,19 +586,18 @@ class MyState extends State<MyStateFul> {
                       child: TextButton(
                           onPressed: () {
                             setState(() {
-                              egal=true;
+                              egal = true;
                             });
-                          try {
-                            divParentEquationIntoAdditionAndSubtraction(
-                                equation.text);
-                            determineMultAndDivOperationAndItsLocation();
-                            solvingMultiplicationAndDivisionEquations();
+                            try {
+                              divParentEquationIntoAdditionAndSubtraction(
+                                  equation.text);
+                              determineMultAndDivOperationAndItsLocation();
+                              solvingMultiplicationAndDivisionEquations();
 
-                            result.text = solveOverallEquation();
-                          }
-                          catch(e){
-                            result.text="error";
-                          }
+                              result.text = solveOverallEquation();
+                            } catch (e) {
+                              result.text = "error";
+                            }
                           },
                           child: const Text(
                             "=",

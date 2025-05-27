@@ -10,7 +10,8 @@ import 'package:firstapp/home.dart';
   late List listNumForMultDiv;
   late List assistant2;
   List indexMultOrDiv = [];
-  void divParentEquationIntoAdditionAndSubtraction(equation) {
+  void divParentEquationIntoAdditionAndSubtraction(String equation) {
+    initVar();
 List x=equation.split('');
 for(int i=0; i<x.length-1;i++){
   if((x[i]=='+' || x[i]=='×' || x[i]=='÷' || x[i]=='-' || x[i]=='.') &&
@@ -19,11 +20,10 @@ for(int i=0; i<x.length-1;i++){
       throw Exception("plusiers operand");
     }
 
-}
-print(x);
-    listNumForAddSub = equation!.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
-    listAddSubOpr = equation!.split(RegExp(r"[×÷.]?\d+")); //tbaynlna win ljamee w win tareh
+} listNumForAddSub = equation.split(RegExp(r'[-+]')); // hadi hiya la liste li rah nhasbo mnha f tali
+    listAddSubOpr = equation.split(RegExp(r"[×÷.]?\d+")); //tbaynlna win ljamee w win tareh
     listAddSubOpr = addOprToList(listAddSubOpr);
+    print("listAddSubOpr$listAddSubOpr");
   }
 
 //---------------------------------------------------
@@ -48,6 +48,7 @@ print(x);
             }
             listOfListNumForMultDiv.add(listNumForMultDiv);
             listMultDivOpr.add(assistant1);
+            print("listMultDivOpr $listMultDivOpr");
           thereIsMultAndDiv1 = false;
           break;
         }
@@ -74,6 +75,7 @@ print(x);
       }
       p = i+1;
     }
+    print("listNumForAddSub$listNumForAddSub");
     return '${listNumForAddSub[p]}';
   }
 
@@ -87,6 +89,7 @@ print(x);
         u.add(listAddSubOpr[i]);
       }
     }
+    print("u$u");
     return u;
   }
   //------------------------------------------------------------------
@@ -110,6 +113,7 @@ print(x);
       a=j;
     }
     listNumForAddSub[indexMultOrDiv[i]]=listOfListNumForMultDiv[i][a+1];
+    print("listNumForAddSub$listNumForAddSub");
   }
 
   }
@@ -130,4 +134,13 @@ print(x);
   double div(double x, double y) {
     return x / y;
   }
-
+void initVar(){
+   assistant1=[];
+   listOfListNumForMultDiv = [];
+   listMultDivOpr = [];
+   thereIsMultAndDiv1 = false;
+   thereIsMultAndDiv2 = false;
+   listNumForMultDiv;
+   List assistant2;
+   indexMultOrDiv = [];
+}
