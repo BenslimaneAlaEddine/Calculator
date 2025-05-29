@@ -194,8 +194,8 @@ class MyState extends State<MyStateFul> {
                               egal = false;
                             });
                             c.add(7);
-                            // equation.text ?? '';
-                            // equation.text = "${equation.text}7";
+                             equation.text ?? '';
+                             equation.text = "${equation.text}7";
                           },
                           child: const Text(
                             "7",
